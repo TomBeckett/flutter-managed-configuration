@@ -25,7 +25,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace 'io.mway.managed_configurations'
+    // Conditional for compatibility with AGP <4.2.
+    if (project.android.hasProperty("namespace")) {
+        namespace 'io.mway.managed_configurations'
+    }
     compileSdkVersion 31
 
     sourceSets {
